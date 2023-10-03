@@ -1,0 +1,16 @@
+{% extends "main.html" %}
+
+{% block title %}Skills and Experiences{% endblock title %}
+
+{% block content %}
+ 
+
+{% for work in works %}
+    <h3>{{work.title}}</h3>
+    <a href="{{work.url}}">{{work.title}}</a>
+    <p>{{work.description}}</p>
+{% endfor %}
+
+
+
+{% endblock content %}
