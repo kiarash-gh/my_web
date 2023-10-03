@@ -58,6 +58,8 @@ class MyWorks(models.Model):
 # resume
 class Experience(models.Model):
     job_title = models.CharField(max_length=255)
+    company_name = models.CharField(max_length=255, blank=True, null=True)
+    company_website = models.URLField(null=True, blank=True)
     start_from = models.DateField()
     end_to = models.DateField(null=True, blank=True)
     description = models.TextField(blank=True, null=True)

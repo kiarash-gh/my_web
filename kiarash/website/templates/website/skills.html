@@ -1,0 +1,37 @@
+{% extends "main.html" %}
+
+{% block title %}Skills and Experiences{% endblock title %}
+
+{% block content %}
+    
+{% regroup my_skills by level as skill_list %}
+
+
+<h3>My Skills</h3>
+<ul>
+    {% for level in skill_list %}
+    <li>{{ level.grouper }}
+        <ul>
+            {% for skill in level.list %}
+            <li>{{ skill.name }}</li>
+            {% endfor %}
+        </ul>
+    </li>
+    {% endfor %}
+</ul>
+
+<br/>
+<hr/>
+
+<h3>My Experiences</h3>
+
+{% for exp in my_exp %}
+    <h3>{{exp.job_title}}</h3>
+    <a href="{{exp.company_website}}">{{exp.company_name}}</a>
+    <p>{{exp.start_from}}-{% if exp.end_to %}{{exp.end_to}}{%else%}Currently working{% endif %}</p>
+    <p>{{exp.description}}</p>
+{% endfor %}
+
+
+
+{% endblock content %}
