@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import AboutMe, ContactInfo, SkillLevel, Skills, SocialMedia, MyWorks, Resume, ContactMe
+from .models import AboutMe, ContactInfo, SkillLevel, Skills, SocialMedia, MyWorks, Experience, ContactMe
 
 # Register your models here.
 admin.site.register(AboutMe)
@@ -7,7 +7,7 @@ admin.site.register(ContactInfo)
 admin.site.register(SkillLevel)
 admin.site.register(SocialMedia)
 admin.site.register(MyWorks)
-admin.site.register(Resume)
+admin.site.register(Experience)
 
 
 @admin.register(Skills)

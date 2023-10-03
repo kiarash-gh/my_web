@@ -12,6 +12,10 @@ class AboutMe(models.Model):
 
     def __str__(self) -> str:
         return self.title
+    
+    class Meta:
+        verbose_name = "About Me"
+        verbose_name_plural = "About Me"
 
 
 #skill levels
@@ -20,6 +24,10 @@ class SkillLevel(models.Model):
 
     def __str__(self) -> str:
         return self.name
+    
+    class Meta:
+        verbose_name = "Skill Level"
+        verbose_name_plural = "Skill Levels"
 
 #skills
 class Skills(models.Model):
@@ -28,6 +36,10 @@ class Skills(models.Model):
 
     def __str__(self) -> str:
         return self.name
+    
+    class Meta:
+        verbose_name = "Skill"
+        verbose_name_plural = "Skills"
 
 # my works
 class MyWorks(models.Model):
@@ -39,9 +51,12 @@ class MyWorks(models.Model):
     def __str__(self) -> str:
         return self.title
     
+    class Meta:
+        verbose_name = "My Work"
+        verbose_name_plural = "My Works"
 
 # resume
-class Resume(models.Model):
+class Experience(models.Model):
     job_title = models.CharField(max_length=255)
     start_from = models.DateField()
     end_to = models.DateField(null=True, blank=True)
@@ -49,6 +64,10 @@ class Resume(models.Model):
 
     def __str__(self) -> str:
         return f"{self.job_title} - {self.start_from}"
+    
+    class Meta:
+        verbose_name = "Experience"
+        verbose_name_plural = "Experiences"
 
 
 # contact info
@@ -59,6 +78,10 @@ class ContactInfo(models.Model):
 
     def __str__(self) -> str:
         return self.title
+    
+    class Meta:
+        verbose_name = "Contact Info"
+        verbose_name_plural = "Contact Info"
 
 
 # social media
@@ -72,6 +95,10 @@ class SocialMedia(models.Model):
         return self.name
 
 
+    class Meta:
+        verbose_name = "Social Media"
+        verbose_name_plural = "Social Medias"
+
 
 # contact me
 class ContactMe(models.Model):
@@ -83,3 +110,7 @@ class ContactMe(models.Model):
 
     def __str__(self) -> str:
         return self.name
+    
+    class Meta:
+        verbose_name = "Contanct Me"
+        verbose_name_plural = "Contact Me"
