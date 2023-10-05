@@ -6,4 +6,16 @@
 
 {{about.description}}
 
+{% for recommendation in my_recommendations  %}
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{recommendation.recommender_profile_image.url}}" alt="{{recommendation.recommender}}">
+        <div class="card-body">
+          <h5 class="card-title">{{recommendation.recommender}}</h5>
+          <p class="card-text">{{recommendation.recommendation}}</p>
+          <a href="{{recommendation.recommender_profile_url}}" class="btn btn-primary">Show Profile</a>
+        </div>
+      </div>
+
+{% endfor %}
+
 {% endblock content %}

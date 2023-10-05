@@ -120,3 +120,12 @@ class ContactMe(models.Model):
         verbose_name_plural = "Contact Me"
 
 
+#recommendations
+class Recommendation(models.Model):
+    recommender = models.CharField(max_length=255)
+    recommender_profile_image = models.ImageField(upload_to='recommender')
+    recommender_profile_url = models.URLField(blank=True, null=True)
+    recommendation = models.TextField(blank=True, null=True)
+
+    def __str__(self) -> str:
+        return self.recommender

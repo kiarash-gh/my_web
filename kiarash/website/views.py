@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import AboutMe, Skills, Experience, MyWorks, ContactMe, HomePage
+from .models import AboutMe, Skills, Experience, MyWorks, ContactMe, HomePage, Recommendation
 from .forms import ContactForm
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
@@ -14,7 +14,8 @@ def home_page(request):
 
 def about_me(request):
     about = AboutMe.objects.all()
-    context = {'about': about[0]}
+    my_recommendations = Recommendation.objects.all()
+    context = {'about': about[0], 'my_recommendations': my_recommendations }
     return render(request, 'website/about.html', context)
 
 
@@ -64,3 +65,9 @@ def contact(request):
 
 def success(request):
       return render(request, 'website/success.html', {})
+
+
+
+
+      
+      
