@@ -1,15 +1,21 @@
 from django.shortcuts import render, redirect
-from .models import AboutMe, Skills, Experience, MyWorks, ContactMe
+from .models import AboutMe, Skills, Experience, MyWorks, ContactMe, HomePage
 from .forms import ContactForm
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
 import time
 
 
+def home_page(request):
+      home = HomePage.objects.all()
+      context = {'home':home[0]}
+      return render(request, 'website/home.html', context)
+
+
 def about_me(request):
     about = AboutMe.objects.all()
     context = {'about': about[0]}
-    return render(request, 'website/home.html', context)
+    return render(request, 'website/about.html', context)
 
 
 def skills(request):

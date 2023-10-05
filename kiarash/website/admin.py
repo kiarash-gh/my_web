@@ -1,7 +1,8 @@
 from django.contrib import admin
-from .models import AboutMe, ContactInfo, SkillLevel, Skills, SocialMedia, MyWorks, Experience, ContactMe
+from .models import AboutMe, ContactInfo, SkillLevel, Skills, SocialMedia, MyWorks, Experience, ContactMe, HomePage
 
 # Register your models here.
+admin.site.register(HomePage)
 admin.site.register(AboutMe)
 admin.site.register(ContactInfo)
 admin.site.register(SkillLevel)

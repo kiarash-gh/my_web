@@ -3,6 +3,8 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
 # home
+class HomePage(models.Model):
+    profile_image = models.ImageField(upload_to='profile')
 
 
 # About me
