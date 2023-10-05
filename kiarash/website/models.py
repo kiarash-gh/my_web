@@ -116,3 +116,5 @@ class ContactMe(models.Model):
     class Meta:
         verbose_name = "Contanct Me"
         verbose_name_plural = "Contact Me"
+
+

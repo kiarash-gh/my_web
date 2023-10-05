@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
-from .models import AboutMe, Skills, Experience, MyWorks
+from .models import AboutMe, Skills, Experience, MyWorks, ContactMe
 from .forms import ContactForm
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
+import time
 
-# Create your views here.
 
 def about_me(request):
     about = AboutMe.objects.all()
@@ -18,10 +18,12 @@ def skills(request):
     context = {'my_skills': my_skills, 'my_exp': my_exp}
     return render(request, 'website/skills.html', context)
 
+
 def my_works(request):
     works = MyWorks.objects.all()
     context = {'works': works}
     return render(request, 'website/works.html', context)
+
 
 def contact(request):
 	if request.method == 'POST':
@@ -35,12 +37,24 @@ def contact(request):
 			'message':form.cleaned_data['message'], 
 			}
 			message = "\n".join(body.values())
+			contact_me = ContactMe(
+				name=form.cleaned_data['name'],
+				subject=form.cleaned_data['subject'],
+				email_address=form.cleaned_data['email_address'],
+				message=form.cleaned_data['message']
+			)
+			contact_me.save()
 
-			try:
-				send_mail(subject, message, 'kiarash.gh@gmail.com', ['kiarash.gh@gmail.com']) 
-			except BadHeaderError:
-				return HttpResponse('Invalid header found.')
-			return redirect ("main:homepage")
-      
+			# try:
+			# 	send_mail(subject, message, 'kiarash.gh@gmail.com', ['kiarash.gh@gmail.com']) 
+			# except BadHeaderError:
+			# 	return HttpResponse('Invalid header found.')
+			time.sleep(2)
+			return redirect("/success")
+		      
 	form = ContactForm()
-	return render(request, "website/contact.html", {'form':form})
+	return render(request, 'website/contact.html', {'form':form})
+
+
+def success(request):
+      return render(request, 'website/success.html', {})
