@@ -1,10 +1,30 @@
 {% extends "main.html" %}
+{% load static %}
 
 {% block title %}About Me{% endblock title %}About Me
 
 {% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <img src="{{home.profile_image.url}}" class="rounded float-right home-page-img" alt="..." width="500" height="500">
+        </div>
+        <div class="home-page-greetings col">
+            <p>{{home.greetings}}</p>
+        </div>
+    </div>
+</div>
 
-<img src="{{home.profile_image.url}}" class="rounded mx-auto d-block" alt="...">
+<br/>
+<br/>
+<br/>
+<br/>
+
+<div class="about-section">
+
+    <p> {{about.description}} </p>
+
+</div>
 
 
 {% endblock content %}

@@ -5,6 +5,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 # home
 class HomePage(models.Model):
     profile_image = models.ImageField(upload_to='profile')
+    greetings = models.TextField(blank=True, null=True)
 
 
 # About me

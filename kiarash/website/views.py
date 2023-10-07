@@ -8,7 +8,8 @@ import time
 
 def home_page(request):
       home = HomePage.objects.all()
-      context = {'home':home[0]}
+      about = AboutMe.objects.all()
+      context = {'home':home[0], "about": about[0]}
       return render(request, 'website/home.html', context)
 
 
