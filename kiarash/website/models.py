@@ -7,6 +7,17 @@ class HomePage(models.Model):
     profile_image = models.ImageField(upload_to='profile')
     greetings = models.TextField(blank=True, null=True)
 
+class Greetings(models.Model):
+    greeting = models.CharField(max_length=255)
+    display_order = models.PositiveSmallIntegerField(default=0)
+    def __str__(self):
+        return self.greeting
+    
+    class Meta:
+        verbose_name = "Greeting"
+        verbose_name_plural = "Greetings"
+    
+
 
 # About me
 class AboutMe(models.Model):
