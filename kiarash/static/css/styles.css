@@ -2,12 +2,8 @@
     text-decoration: underline;
 } */
 body{
-    background-color: #e6e2ee!important;
+    background-color: #dfd7f5!important;
 }
-.about-section {
-    background-color: lightblue;
-  }
-
 
 .home-page-img {
     margin-top: 10px;
@@ -15,20 +11,35 @@ body{
 
 .home-page-greetings{
     margin-top: 10px!important;
+    
 }
 
-.tcontain{
-    position: relative;
-    height: 400px;
-    width: 700px;
-}
+.recommendation-section{
+    
+    display:flex;
+    gap: 20px;
+    height: 400;
+    width: 1500!important;
 
-div.tcard{
+    
+}
+.scrolling-wrapper{
+	overflow-x: auto;
+}
+.recommendation{
     position: relative;
     height: 300px;
     width: 600px;
-    padding: 10px;
-    margin: 15px;
+    
+}
+
+div.recommendation-card{
+    position: relative;
+    background-color: #e8e4f2;
+    height: 300px;
+    width: 600px;
+    padding: 15px;
+    margin: 10px;
     border-top-left-radius: 50px;
     border-top-right-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -36,21 +47,27 @@ div.tcard{
 
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
+    &:hover{
+		transform: translateY(-5px);
+		opacity: 0.9;
+	}
 }
 
-.cimg{
+.recommender-img{
     position: absolute;
     left:10px;
     top:10px;
 }
 
-.tcont{
+.recommendation-content{
     position: absolute;
     left:10px;
     top:110px;
     margin: 10px;
     text-align: justify;
-    display: inline-block;
+    display: -webkit-box;
+    -webkit-line-clamp:4;
+    -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
     height: 100px;
@@ -70,4 +87,10 @@ div.tcard{
     top:240px;
     height: 40px;
     width: 180px;
+}
+
+.about-section{
+    margin: 15px;
+    padding-top: 10px;
+    text-align: justify;
 }

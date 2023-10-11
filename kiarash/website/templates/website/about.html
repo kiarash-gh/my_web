@@ -4,30 +4,26 @@
 {% block title %}About Me{% endblock title %}About Me
 
 {% block content %}
+<div class="about-section">
+    {{about.description}}
+</div>
 
-{{about.description}}
+<div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2">
+    {% for recommendation in my_recommendations  %}
+            <div class="col-6">
 
-{% for recommendation in my_recommendations  %}
-    
-      <div class="tcontain">
-
-          <div class="tcard">
-              <div class="cimg">
-                  <img class="rounded-circle" src="{{recommendation.recommender_profile_image.url}}" alt="{{recommendation.recommender}}  width="100" height="100"">
+                <div class="recommendation-card">
+                    <div class="recommender-img">
+                        <img class="rounded-circle" src="{{recommendation.recommender_profile_image.url}}" alt="{{recommendation.recommender}}  width="100" height="100"">
+                    </div>
+                        <h5 class="recommender-name">{{recommendation.recommender}}</h5>
+                        <span class="recommendation-content">
+                            <p class="card-text">{{recommendation.recommendation}}</p>
+                        </span>
+                        <a href="{{recommendation.recommender_profile_url}}" class="btn btn-primary rec-url">View Linkedin Profile</a>
                 </div>
-
-                <h5 class="recommender-name">{{recommendation.recommender}}</h5>
-                
-                <span class="tcont">
-                    <p class="card-text">{{recommendation.recommendation}}</p>
-                </span>
-
-                <a href="{{recommendation.recommender_profile_url}}" class="btn btn-primary rec-url">View Linkedin Profile</a>
             </div>
-            
-    </div>
-
-
-{% endfor %}
+    {% endfor %}
+</div>
 
 {% endblock content %}
