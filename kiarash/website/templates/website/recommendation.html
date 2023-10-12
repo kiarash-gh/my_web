@@ -1,0 +1,20 @@
+{% extends "main.html" %}
+{% block title %}Recommendations{% endblock title %}
+
+
+{% block content %}
+
+
+<div class="recommendation-detail">
+
+    <div class="recommender-detail-img">
+        <img class="rounded-circle" src="{{details.recommender_profile_image.url}}" alt="{{details.recommender}}  width="250" height="250"">
+    </div>
+        <h5 class="recommender-detail-name">{{details.recommender}}</h5>
+        <span class="recommendation-detail-content">
+            <p class="card-detail-text">{{details.recommendation}}</p>
+        </span>
+        <a href="{{details.recommender_profile_url}}" class="btn btn-primary rec-detail-url">View Linkedin Profile</a>
+    </div>
+<div>
+{% endblock content %}

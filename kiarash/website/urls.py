@@ -10,6 +10,7 @@ urlpatterns = [
     path('my_works/', views.my_works, name='works'),
     path('contact_me/', views.contact, name='contact'),
     path('success/', views.success, name='success'),
+    path('<str:id>/recommendation/', views.recommendation, name='rec'),
 ]
 
 

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import AboutMe, Skills, Experience, MyWorks, ContactMe, HomePage, Recommendation, Greetings
 from .forms import ContactForm
 from django.core.mail import send_mail, BadHeaderError
@@ -22,6 +22,13 @@ def about_me(request):
     my_recommendations = Recommendation.objects.all()
     context = {'about': about, 'my_recommendations': my_recommendations }
     return render(request, 'website/about.html', context)
+
+
+def recommendation(request, id):
+      recommendation_detail = get_object_or_404(Recommendation, pk=id)
+      context = {"details" : recommendation_detail}
+      return render(request, 'website/recommendation.html', context)
+      
 
 
 def skills(request):
