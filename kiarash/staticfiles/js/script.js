@@ -15,4 +15,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Listen for scroll events and update the link style
     window.addEventListener("scroll", handleScroll);
+
+    
 });

@@ -3,6 +3,7 @@
 
 {% block title %}Home{% endblock title %}About Me
 
+
 {% block content %}
 <div class="container">
     <div class="row">
@@ -10,7 +11,15 @@
             <img src="{{home.profile_image.url}}" class="rounded float-right home-page-img" alt="..." width="500" height="500">
         </div>
         <div class="home-page-greetings col">
-            <p>{{home.greetings}}</p>
+            <div class="middle">
+                <span class="text-type-animation"><strong>Hi I am Kiarash,</strong>  <br>
+                  <span
+                        class="txt-rotate"
+                        data-period="2000"
+                        data-rotate='{{greetings}}'></span>
+                 </span>
+            </div>
+              
         </div>
     </div>
 </div>
@@ -20,9 +29,9 @@
 <br/>
 <br/>
 
-<div class="about-section">
+<div class="home-greetings-section">
 
-    <p> {{about.description}} </p>
+    <p> {{home.greetings}} </p>
 
 </div>
 

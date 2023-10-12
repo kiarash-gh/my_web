@@ -1,22 +1,26 @@
 from django.shortcuts import render, redirect
-from .models import AboutMe, Skills, Experience, MyWorks, ContactMe, HomePage, Recommendation
+from .models import AboutMe, Skills, Experience, MyWorks, ContactMe, HomePage, Recommendation, Greetings
 from .forms import ContactForm
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
 import time
+import json
 
 
 def home_page(request):
-      home = HomePage.objects.all()
-      about = AboutMe.objects.all()
-      context = {'home':home[0], "about": about[0]}
+      home = HomePage.objects.first()
+      greetings = Greetings.objects.all().order_by("display_order").values()
+      greeting_list = [g['greeting'] for g in greetings]
+      print(greeting_list)
+      about = AboutMe.objects.first()
+      context = {'home':home, 'about': about, 'greetings':json.dumps(greeting_list)}
       return render(request, 'website/home.html', context)
 
 
 def about_me(request):
-    about = AboutMe.objects.all()
+    about = AboutMe.objects.first()
     my_recommendations = Recommendation.objects.all()
-    context = {'about': about[0], 'my_recommendations': my_recommendations }
+    context = {'about': about, 'my_recommendations': my_recommendations }
     return render(request, 'website/about.html', context)
 
 
