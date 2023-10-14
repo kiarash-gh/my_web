@@ -11,7 +11,6 @@ def home_page(request):
       home = HomePage.objects.first()
       greetings = Greetings.objects.all().order_by("display_order").values()
       greeting_list = [g['greeting'] for g in greetings]
-      print(greeting_list)
       about = AboutMe.objects.first()
       context = {'home':home, 'about': about, 'greetings':json.dumps(greeting_list)}
       return render(request, 'website/home.html', context)
@@ -39,7 +38,6 @@ def skills(request):
 	for level in skill_levels:
 		skill_list.append({'level':level.get('name'), 'skills': [s.name for s in my_skills if s.level.name == level.get('name')]})
 
-	print(skill_list)
 	my_exp = Experience.objects.all().order_by('-start_from').values()  
 	context = {'my_skills': skill_list, 'my_exp': my_exp}
 	return render(request, 'website/skills.html', context)
