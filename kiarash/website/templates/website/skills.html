@@ -4,23 +4,19 @@
 
 {% block content %}
     
-{% regroup my_skills by level as skill_list %}
 
 
-<h3>My Skills</h3>
-<ul>
-    {% for level in skill_list %}
-    <li>{{ level.grouper }}
-        <ul>
-            {% for skill in level.list %}
-            <li>{{ skill.name }}</li>
+{% for skill in my_skills %}
+    {% if skill.skills %}
+        <h3>{{skill.level}}</h3>
+            {% for s in skill.skills %}
+                <p>{{s}}</p>
             {% endfor %}
-        </ul>
-    </li>
-    {% endfor %}
-</ul>
+    {% endif %}
+{% endfor %}
 
-<br/>
+
+
 <hr/>
 
 <h3>My Experiences</h3>

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import AboutMe, Skills, Experience, MyWorks, ContactMe, HomePage, Recommendation, Greetings
+from .models import AboutMe, Skills, Experience, MyWorks, ContactMe, HomePage, Recommendation, Greetings, SkillLevel
 from .forms import ContactForm
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
@@ -32,10 +32,17 @@ def recommendation(request, id):
 
 
 def skills(request):
-    my_skills = Skills.objects.all()  
-    my_exp = Experience.objects.all().order_by('-start_from').values()  
-    context = {'my_skills': my_skills, 'my_exp': my_exp}
-    return render(request, 'website/skills.html', context)
+	my_skills = Skills.objects.all()  
+	skill_levels = SkillLevel.objects.all().order_by('display_order').values()
+
+	skill_list = []
+	for level in skill_levels:
+		skill_list.append({'level':level.get('name'), 'skills': [s.name for s in my_skills if s.level.name == level.get('name')]})
+
+	print(skill_list)
+	my_exp = Experience.objects.all().order_by('-start_from').values()  
+	context = {'my_skills': skill_list, 'my_exp': my_exp}
+	return render(request, 'website/skills.html', context)
 
 
 def my_works(request):
