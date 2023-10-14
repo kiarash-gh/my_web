@@ -58,9 +58,9 @@ class Skills(models.Model):
 # my works
 class MyWorks(models.Model):
     title = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='my_works', null=True)
     url = models.URLField(blank=True, null=True)
-    description = models.TextField(blank=True, null=True)
-    #add pic
+    description = models.TextField(blank=True, null=True)  
 
     def __str__(self) -> str:
         return self.title

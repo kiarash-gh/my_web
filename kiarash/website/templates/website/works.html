@@ -4,12 +4,21 @@
 
 {% block content %}
  
+<div class="contaienr">
+    <div class="row">
+        {% for work in works %}
 
-{% for work in works %}
-    <h3>{{work.title}}</h3>
-    <a href="{{work.url}}">{{work.title}}</a>
-    <p>{{work.description}}</p>
-{% endfor %}
+            <div class="work-container col">
+                <div class="work-img">
+                    <img src="{{work.image.url}}" class="img-thumbnail" alt="..." width="350" height="350">
+                </div>
+                    <a class="work-url" href="{{work.url}}">{{work.title}}</a>
+                    <p class="work-description">{{work.description}}</p>
+            </div>
+            
+        {% endfor %}
+    </div>
+</div>
 
 
 
