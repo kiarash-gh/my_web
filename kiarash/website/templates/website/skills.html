@@ -5,15 +5,33 @@
 {% block content %}
     
 
+<div id="skill-level" class="container">
+    <div id="skill-level-row" class="row">
+        {% for skill in my_skills %}
+            {% if skill.skills %}
+                <div class="col">
+                    <h3>{{skill.level}}</h3>
+                    <hr id="skill-level-hr"/>
+                    <div class="container">
+                        <div class="row">
+                            {% for s in skill.skills %}
+                                <div class="col-sm">
+                                    <p class="badge badge-primary">{{s}}</p>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
 
-{% for skill in my_skills %}
-    {% if skill.skills %}
-        <h3>{{skill.level}}</h3>
-            {% for s in skill.skills %}
-                <p>{{s}}</p>
-            {% endfor %}
-    {% endif %}
-{% endfor %}
+
+
+
+
+
 
 
 
@@ -23,11 +41,11 @@
 
 {% for exp in my_exp %}
     <h3>{{exp.job_title}}</h3>
-    <a href="{{exp.company_website}}">{{exp.company_name}}</a>
+    <a href="{{exp.company_website}}" target="_blank">{{exp.company_name}}</a>
     <p>{{exp.start_from}}-{% if exp.end_to %}{{exp.end_to}}{%else%}Currently working{% endif %}</p>
     <p>{{exp.description}}</p>
 {% endfor %}
 
-
+<a href="{{my_resume.resume}}" class="btn btn-primary rec-detail-url">Download Resume</a>
 
 {% endblock content %}
