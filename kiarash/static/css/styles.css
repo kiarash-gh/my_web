@@ -175,3 +175,22 @@ div.middle{
     width: 350px;
     text-align: justify;
 }
+
+
+/* Skills and Experiences */
+
+#skill-level{
+    margin-top: 20px;
+}
+
+#skill-level-row{
+    text-align: center;
+}
+
+#skill-level-hr{
+    height: 5px;
+    color:rgb(51, 0, 94);
+}
+.badge{
+    background-color: darkviolet;
+}
