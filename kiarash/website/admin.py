@@ -8,6 +8,7 @@ from .models import (
     HomePage, 
     MyWorks, 
     Recommendation,
+    Resume,
     SkillLevel, 
     Skills, 
     SocialMedia, 
@@ -20,6 +21,7 @@ admin.site.register(Experience)
 admin.site.register(HomePage)
 admin.site.register(MyWorks)
 admin.site.register(Recommendation)
+admin.site.register(Resume)
 admin.site.register(SocialMedia)
 
 

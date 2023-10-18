@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import AboutMe, Skills, Experience, MyWorks, ContactMe, HomePage, Recommendation, Greetings, SkillLevel
+from .models import AboutMe, Skills, Experience, MyWorks, ContactMe, HomePage, Recommendation, Resume,Greetings, SkillLevel
 from .forms import ContactForm
 from django.core.mail import send_mail, BadHeaderError
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
+from django.conf import settings
 import time
 import json
+import os
 
 
 def home_page(request):
@@ -33,13 +35,15 @@ def recommendation(request, id):
 def skills(request):
 	my_skills = Skills.objects.all()  
 	skill_levels = SkillLevel.objects.all().order_by('display_order').values()
+       
+	my_resume = Resume.objects.all().order_by('-created_on').values().first()
 
 	skill_list = []
 	for level in skill_levels:
 		skill_list.append({'level':level.get('name'), 'skills': [s.name for s in my_skills if s.level.name == level.get('name')]})
 
 	my_exp = Experience.objects.all().order_by('-start_from').values()  
-	context = {'my_skills': skill_list, 'my_exp': my_exp}
+	context = {'my_skills': skill_list, 'my_exp': my_exp, 'my_resume':my_resume}
 	return render(request, 'website/skills.html', context)
 
 
@@ -84,7 +88,11 @@ def success(request):
       return render(request, 'website/success.html', {})
 
 
-
-
-      
-      
+def download_resume(request, filename):
+    file_path = os.path.join(settings.MEDIA_ROOT, 'resume', filename)
+    if os.path.exists(file_path):
+        with open(file_path, 'rb') as fh:
+            response = HttpResponse(fh.read(), content_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+            response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
+            return response
+    raise Http404

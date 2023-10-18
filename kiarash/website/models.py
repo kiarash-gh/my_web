@@ -1,7 +1,16 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField 
+from uuid import uuid4
+import os
 
-# Create your models here.
+def custom_upload_name(instance, filename):    
+    upload_to = instance.upload_to
+    ext = filename.split('.')[-1]
+    unique_filename = f"{uuid4().hex}"
+    filename = f"{instance.file_name}_{unique_filename}.{ext}"
+    return os.path.join(upload_to, filename)
+
+
 # home
 class HomePage(models.Model):
     profile_image = models.ImageField(upload_to='profile')
@@ -59,13 +68,13 @@ class Skills(models.Model):
 # my works
 class MyWorks(models.Model):
     title = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='my_works', null=True)
+    image = models.ImageField(upload_to=custom_upload_name, null=True)
     url = models.URLField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)  
 
     def __str__(self) -> str:
         return self.title
-    
+        
     class Meta:
         verbose_name = "My Work"
         verbose_name_plural = "My Works"
@@ -86,6 +95,29 @@ class Experience(models.Model):
         verbose_name = "Experience"
         verbose_name_plural = "Experiences"
 
+
+# resume file
+class Resume(models.Model):
+    file_name = models.CharField(max_length=255)
+    resume = models.FileField(upload_to=custom_upload_name, null=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
+
+    def __str__(self) -> str:
+        return self.file_name
+    
+    @property
+    def upload_to(self):
+        return os.path.join('resume')
+    
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.resume.name = custom_upload_name(self, self.resume.name)
+        super().save(*args, **kwargs)
+    
+    class Meta:
+        verbose_name = "Resume"
+        verbose_name_plural = "Resume"
 
 # contact info
 class ContactInfo(models.Model):
