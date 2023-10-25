@@ -4,15 +4,18 @@
 
 {% block content %}
  
-<div class="contaienr">
-    <div class="row">
+<div class="container">
+    <div class="row mx-0 mt-3 justify-content-center">
         {% for work in works %}
 
-            <div class="work-container col">
+            <div class="work-container col d-flex flex-column align-items-center">
                 <div class="work-img">
                     <img src="{{work.image.url}}" class="img-thumbnail" alt="..." width="350" height="350">
+                    <div class="w-100">
+                        <a class="work-url" href="{{work.url}}">{{work.title}}</a>
+                    </div>
                 </div>
-                    <a class="work-url" href="{{work.url}}">{{work.title}}</a>
+                
                     <p class="work-description">{{work.description}}</p>
             </div>
             

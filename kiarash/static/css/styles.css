@@ -45,7 +45,7 @@ div.recommendation-card{
     position: relative;
     background-color: #e8e4f2;
     height: 300px;
-    width: 600px;
+    /* width: 600px; */
     padding: 15px;
     margin: 10px;
     border-top-left-radius: 50px;
@@ -61,16 +61,16 @@ div.recommendation-card{
 	}
 }
 
-.recommender-img{
+/* .recommender-img{
     position: absolute;
     left:10px;
     top:10px;
-}
+} */
 
 .recommendation-content{
-    position: absolute;
+    /* position: absolute;
     left:10px;
-    top:110px;
+    top:110px; */
     margin: 10px;
     text-align: justify;
     display: -webkit-box;
@@ -79,20 +79,20 @@ div.recommendation-card{
     overflow: hidden;
     text-overflow: ellipsis;
     height: 100px;
-    width: 550px;
+     /* width: 550px;  */
 }
 
 .recommender-name{
-    position: absolute;
+    /* position: absolute;
     left:120px;
-    top:50px;
+    top:50px; */
     font-weight: bold;
 }
 
 .rec-url{
-    position: absolute;
+    /* position: absolute;
     left:390px;
-    top:240px;
+    top:240px; */
     height: 40px;
     width: 180px;
 }
@@ -109,6 +109,7 @@ div.middle{
     text-align:center;
     position: absolute;
     top: 150px;
+    min-width: 550px;
   }
   .text-type-animation{
     text-transform:uppercase;
@@ -149,13 +150,13 @@ div.middle{
     height: 500px;
     
     position: relative;
-    margin: 20px;
+    /* margin: 20px; */
 }
 
 .work-img{
-    position: absolute;
+    /* position: absolute;
     top: 15px;
-    left: 20px;
+    left: 20px; */
     filter: grayscale(100%);
     &:hover{
         filter: grayscale(0%);
@@ -163,15 +164,15 @@ div.middle{
 }
 
 .work-url{
-    position: absolute;
+    /* position: absolute;
     top: 190px;
-    left: 20px;
+    left: 20px; */
 }
 
 .work-description{
-    position: absolute;
+    /* position: absolute;
     top: 220px;
-    left: 20px;
+    left: 20px; */
     width: 350px;
     text-align: justify;
 }
@@ -193,4 +194,13 @@ div.middle{
 }
 .badge{
     background-color: darkviolet;
+}
+
+/* contanct form */
+
+#id_name, #id_subject, #id_message, #id_email_address{
+    width: 100%;
+ padding: 12px 20px;
+ margin: 8px 0;
+ display: inline-block;
 }

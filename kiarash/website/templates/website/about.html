@@ -14,14 +14,17 @@
                 <a href="{% url 'rec' recommendation.id %}">
 
                 <div class="recommendation-card">
-                    <div class="recommender-img">
-                        <img class="rounded-circle" src="{{recommendation.recommender_profile_image.url}}" alt="{{recommendation.recommender}}  width="100" height="100"">
-                    </div>
+                    <div class="recommender-img d-flex align-items-center">
+                        <img class="rounded-circle" style="margin-left: 0; margin-right:10px" src="{{recommendation.recommender_profile_image.url}}" alt="{{recommendation.recommender}}"  width="100" height="100">
                         <h5 class="recommender-name">{{recommendation.recommender}}</h5>
+                    </div>
+                      
                         <span class="recommendation-content">
                             <p class="card-text">{{recommendation.recommendation}}</p>
                         </span>
-                        <a href="{{recommendation.recommender_profile_url}}" class="btn btn-primary rec-url">View Linkedin Profile</a>
+                        <div class="d-flex justify-content-end">
+                          <a href="{{recommendation.recommender_profile_url}}" class="btn btn-primary rec-url">View Linkedin Profile</a>
+                        </div>
                     </div>
                 </a>
             </div>
