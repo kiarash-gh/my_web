@@ -19,7 +19,17 @@
                         data-rotate='{{greetings}}'></span>
                  </span>
             </div>
+
               
+            <div class="bottom d-flex">
+                {% for s in social %}
+                <div class="social-icon">
+                    <a href="{{s.url}}"><i class="{{s.icon}}"></i></a>
+                </div>
+                
+                {% endfor %}
+    
+            </div>
         </div>
     </div>
 </div>

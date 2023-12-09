@@ -68,7 +68,7 @@ class Skills(models.Model):
 # my works
 class MyWorks(models.Model):
     title = models.CharField(max_length=255)
-    image = models.ImageField(upload_to=custom_upload_name, null=True)
+    image = models.ImageField(upload_to='my_work', null=True)
     url = models.URLField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)  
 
@@ -138,7 +138,7 @@ class SocialMedia(models.Model):
     name = models.CharField(max_length=255)
     url = models.URLField()
     display_order = models.SmallIntegerField(default=0)
-    # icon
+    icon = models.CharField(max_length=100, null=True)
 
     def __str__(self) -> str:
         return self.name

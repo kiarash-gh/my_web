@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import AboutMe, Skills, Experience, MyWorks, ContactMe, HomePage, Recommendation, Resume,Greetings, SkillLevel
+from .models import AboutMe, Skills, Experience, MyWorks, ContactMe, HomePage, Recommendation, Resume,Greetings, SkillLevel, SocialMedia
 from .forms import ContactForm
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, Http404
@@ -12,9 +12,10 @@ import os
 def home_page(request):
       home = HomePage.objects.first()
       greetings = Greetings.objects.all().order_by("display_order").values()
+      social = SocialMedia.objects.all().order_by("display_order")
       greeting_list = [g['greeting'] for g in greetings]
       about = AboutMe.objects.first()
-      context = {'home':home, 'about': about, 'greetings':json.dumps(greeting_list)}
+      context = {'home':home, 'about': about, 'greetings':json.dumps(greeting_list), 'social': social}
       return render(request, 'website/home.html', context)
 
 
@@ -37,7 +38,7 @@ def skills(request):
 	skill_levels = SkillLevel.objects.all().order_by('display_order').values()
        
 	my_resume = Resume.objects.all().order_by('-created_on').values().first()
-
+    
 	skill_list = []
 	for level in skill_levels:
 		skill_list.append({'level':level.get('name'), 'skills': [s.name for s in my_skills if s.level.name == level.get('name')]})
