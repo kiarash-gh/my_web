@@ -5,6 +5,7 @@ from .models import (
     ContactMe, 
     Experience, 
     Greetings,
+    Hobbies,
     HomePage, 
     MyWorks, 
     Recommendation,
@@ -19,6 +20,7 @@ admin.site.register(AboutMe)
 admin.site.register(ContactInfo)
 admin.site.register(Experience)
 admin.site.register(HomePage)
+admin.site.register(Hobbies)
 admin.site.register(MyWorks)
 admin.site.register(Recommendation)
 admin.site.register(Resume)

@@ -174,3 +174,16 @@ class Recommendation(models.Model):
 
     def __str__(self) -> str:
         return self.recommender
+    
+
+class Hobbies(models.Model):
+    hobbie = models.CharField(max_length=255)
+    description = models.TextField(blank=True, null=True)
+    display_order = models.PositiveSmallIntegerField(default=0)
+
+    def __str__(self) -> str:
+        return self.hobbie
+    
+    class Meta:
+        verbose_name = 'Hobby'
+        verbose_name_plural = 'Hobbies'
